@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+        <div class="header header-fixed header-auto-show header-logo-center">
+            <a href="notes.html" class="header-title">Notes</a>
+            <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+            <a href="#" data-toggle-theme class="header-icon header-icon-4"><i class="fas fa-lightbulb"></i></a>
+        </div>
+
+        <div id="snackbar-cart" class="snackbar-toast rounded-m bg-green-dark" data-bs-delay="1200"
+            data-bs-autohide="true">
+            <i class="fa fa-shopping-bag me-3"></i>Added to Shopping Cart
+        </div>
+        <div id="snackbar-favorites" class="snackbar-toast rounded-m bg-red-dark" data-bs-delay="1200"
+            data-bs-autohide="true">
+            <i class="fa fa-heart me-3"></i>Saved to Favorites
+        </div>
+
+        <div class="page-content header-clear-small">
+            <div class="content mb-1">
+                <div class="d-flex pb-2">
+                    <div class="align-self-center">
+                        <a href="#" data-back-button="" class="icon pe-3"><i
+                                class="fa pt-1 opacity-80 fa-2x fa-angle-left"></i></a>
+                    </div>
+                    <div class="align-self-center ms-auto">
+                        <a href="#" data-menu="menu-settings"
+                            class="icon icon-xs border border-blue-dark color-blue-dark rounded-xl"><i
+                                class="fa fa-cog font-15"></i></a>
+                    </div>
+                    <div class="align-self-center ms-2">
+                        <a href="#"><img src="images/pictures/faces/2s.png" width="38" class="rounded-xl" /></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content mt-2">
+                <div class="d-flex align-items-center mb-3">
+                    <div id="album-image" class="album-item w-40" data-item="image">
+                        <div class="skeleton h-140px shadow-0 card m-3 card-style"></div>
+                    </div>
+                    <div class="d-flex w-60 p-3 flex-column">
+                        <div id="album-desc" data-item="desc" class="album-item opacity-80 font-11 mb-0">
+                            <span class="skeleton h-20px shadow-0 card mb-2"></span>
+                        </div>
+                        <h2 id="album-title" data-item="title" class="album-item mb-1">
+                            <span class="skeleton w-100 h-40px shadow-0 card mb-2"></span>
+                        </h2>
+                        <p id="album-minister" data-item="minister" class="album-item mb-0">
+                            <span class="skeleton h-20px shadow-0 card mb-2"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex flex-row  gap-2 pb-2 ">
+                    <a href="#" class="btn btn-m btn-full p-0 mb-3 rounded-xl text-uppercase font-900 shadow-s bg-green-dark btn-icon text-start">
+                        <i class="fa fa-play font-13 p-0 rounded-xl text-center"></i>
+                        Play
+                    </a>
+                    <a href="#" class="btn btn-m btn-full mb-3 p-0 rounded-xl text-uppercase font-900 shadow-s bg-green-dark btn-icon text-start">
+                        <i class="fa fa-shuffle font-13 p-0 rounded-xl text-center"></i>
+                       Shuffle
+                    </a>
+                </div>
+                <div id="player-div">
+                    
+
+                    <div class="custom-player d-flex gap-3 align-items-center flex-row">
+                        <button id="play-pause" class="d-flex">Play</button>
+                        <input type="range" id="seek-bar" class="rounded" value="0" max="100" />
+                        <div class="d-flex">
+                            <span id="current-time">0:00</span> /
+                            <span id="duration">0:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="track-div" class="data-div content" data-type="tracks">
+                <div class="card rounded-sm h-80px mb-3 skeleton"></div>
+                <div class="card rounded-sm h-80px mb-3 skeleton"></div>
+                <div class="card rounded-sm h-80px mb-3 skeleton"></div>
+            </div>
+
+            <div class="footer disabled card card-style">
+                <a href="#" class="footer-title"><span class="color-highlight">StickyMobile</span></a>
+                <p class="footer-text">
+                    <span>Made with
+                        <i class="fa fa-heart color-highlight font-16 ps-2 pe-2"></i> by
+                        Enabled</span><br /><br />Powered by the best Mobile Website Developer on Envato
+                    Market. Elite Quality. Elite Products.
+                </p>
+                <div class="text-center mb-3">
+                    <a href="#" class="icon icon-xs rounded-sm shadow-l me-1 bg-facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="icon icon-xs rounded-sm shadow-l me-1 bg-twitter"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#" class="icon icon-xs rounded-sm shadow-l me-1 bg-phone"><i class="fa fa-phone"></i></a>
+                    <a href="#" data-menu="menu-share" class="icon icon-xs rounded-sm me-1 shadow-l bg-red-dark"><i
+                            class="fa fa-share-alt"></i></a>
+                    <a href="#" class="back-to-top icon icon-xs rounded-sm shadow-l bg-dark-light"><i
+                            class="fa fa-angle-up"></i></a>
+                </div>
+                <p class="footer-copyright">
+                    Copyright &copy; Enabled <span id="copyright-year">2017</span>. All
+                    Rights Reserved.
+                </p>
+                <p class="footer-links">
+                    <a href="#" class="color-highlight">Privacy Policy</a> |
+                    <a href="#" class="color-highlight">Terms and Conditions</a> |
+                    <a href="#" class="back-to-top color-highlight"> Back to Top</a>
+                </p>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <!-- End of Page Content-->
+
+       

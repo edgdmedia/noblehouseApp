@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<div class="header header-fixed header-auto-show header-logo-center">
+  <a href="index.html" class="header-title">Noblehouse CC</a>
+  <a href="#" data-back-button class="header-icon header-icon-1"
+    ><i class="fas fa-arrow-left"></i
+  ></a>
+  <a href="#" data-toggle-theme class="header-icon header-icon-4"
+    ><i class="fas fa-lightbulb"></i
+  ></a>
+</div>
+
+<div
+  id="snackbar-cart"
+  class="snackbar-toast rounded-m bg-green-dark"
+  data-bs-delay="1200"
+  data-bs-autohide="true"
+>
+  <i class="fa fa-shopping-bag me-3"></i>Added to Shopping Cart
+</div>
+<div
+  id="snackbar-favorites"
+  class="snackbar-toast rounded-m bg-red-dark"
+  data-bs-delay="1200"
+  data-bs-autohide="true"
+>
+  <i class="fa fa-heart me-3"></i>Saved to Favorites
+</div>
+
+<div class="page-content header-clear-small">
+  <div class="content mt-2">
+    <div class="d-flex">
+      <div class="align-self-center">
+        <h1 id="welcome" class="font-40">Welcome</h1>
+        <p class="mb-0 mt-1 font-11">Noblehouse Christian Center</p>
+      </div>
+      <div class="align-self-center ms-auto">
+        <a
+          href="#"
+          class="icon icon-s bg-theme rounded-l shadow-l rounded-m ms-2 color-theme"
+          ><i class="fa fa-heart color-red-dark font-14"></i
+        ></a>
+        <a
+          href="#"
+          class="icon icon-s bg-theme rounded-l shadow-l rounded-m ms-2 color-theme"
+          ><i class="fa fa-shopping-bag font-14"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="content mt-n1">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="search-box bg-theme w-100 color-theme rounded-m shadow-l">
+        <i class="fa fa-search"></i>
+        <input
+          type="text"
+          class="border-0"
+          placeholder="Search.. - try Leather Edition "
+          data-search
+        />
+        <a href="#" class="clear-search disabled mt-0"
+          ><i class="fa fa-times color-red-dark"></i
+        ></a>
+      </div>
+      <a
+        href="#"
+        class="icon icon-s align-self-center bg-theme rounded-l shadow-l rounded-m ms-2 color-theme"
+        ><i class="fa fa-calendar font-14"></i
+      ></a>
+    </div>
+    <div class="search-results disabled-search-list mt-3">
+      <div class="card card-style mx-0 px-2 p-0 mb-0">
+        <a
+          href="#"
+          class="d-flex py-2"
+          data-filter-item
+          data-filter-name="all apple watch 40 black stainless steel"
+        >
+          <div>
+            <img
+              src="images/store/1a.png"
+              class="rounded-sm me-1"
+              width="45"
+              alt="img"
+            />
+          </div>
+          <div>
+            <span class="color-highlight font-400 d-block pt-0 mb-n2 font-11"
+              >Stainless Steel</span
+            >
+            <strong class="color-theme font-14 d-block mt-n2"
+              >Black Apple Watch 40</strong
+            >
+          </div>
+          <div class="ms-auto text-center align-self-center pe-2">
+            <h5 class="line-height-xs font-18 pt-3">
+              $499.<sup class="font-14">50</sup>
+            </h5>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="d-flex py-2"
+          data-filter-item
+          data-filter-name="all apple watch 42 leather edition white"
+        >
+          <div>
+            <img
+              src="images/store/2a.png"
+              class="rounded-sm me-1"
+              width="45"
+              alt="img"
+            />
+          </div>
+          <div>
+            <span class="color-highlight font-400 d-block pt-0 mb-n2 font-11"
+              >Leather Edition</span
+            >
+            <strong class="color-theme font-14 d-block mt-n2"
+              >White Apple Watch 42</strong
+            >
+          </div>
+          <div class="ms-auto text-center align-self-center pe-2">
+            <h5 class="line-height-xs font-18 pt-3">
+              $599.<sup class="font-14">50</sup>
+            </h5>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="d-flex py-2"
+          data-filter-item
+          data-filter-name="all apple watch lime edition 44 green"
+        >
+          <div>
+            <img
+              src="images/store/3a.png"
+              class="rounded-sm me-1"
+              width="45"
+              alt="img"
+            />
+          </div>
+          <div>
+            <span class="color-highlight font-400 d-block pt-0 mb-n2 font-11"
+              >Lime Edition</span
+            >
+            <strong class="color-theme font-14 d-block mt-n2"
+              >Green Apple Watch 44</strong
+            >
+          </div>
+          <div class="ms-auto text-center align-self-center pe-2">
+            <h5 class="line-height-xs font-18 pt-3">
+              $699.<sup class="font-14">50</sup>
+            </h5>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="search-no-results disabled mt-4">
+    <div class="card card-style">
+      <div class="content">
+        <h1>No Results</h1>
+        <p>
+          Your search brought up no results. Try using a different keyword. Or
+          try typying all to see all items in the demo. These can be linked to
+          anything you want.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Start-->
+
+  <div class="divider divider-margins"></div>
+  <div id="data-div" class="data-div d-flex flex-column p-2" data-type="albums">
+    <div
+      class="card card-style mb-3 skeleton"
+      style="height: 350px !important"
+    ></div>
+    <div
+      class="card card-style mb-3 skeleton"
+      style="height: 350px !important"
+    ></div>
+    <div
+      class="card card-style mb-3 skeleton"
+      style="height: 350px !important"
+    ></div>
+  </div>
+
+  <nav aria-label="pagination-demo">
+    <div class="pagination pagination- justify-content-center">
+      <a
+        id="first-page"
+        class="page-item page-link py-2 rounded-xs color-black shadow-xl border-0"
+        href="#"
+        tabindex="-1"
+        aria-disabled="true"
+        ><i class="fa fa-angles-left"></i
+      ></a>
+      <a
+        id="previous-page"
+        class="page-item page-link py-2 rounded-xs color-black shadow-xl border-0"
+        href="#"
+        tabindex="-1"
+        aria-disabled="true"
+        ><i class="fa fa-angle-left"></i
+      ></a>
+      <div id="pagination" class="d-flex"></div>
+      <a
+        id="next-page"
+        class="page-item page-link py-2 rounded-xs color-black shadow-xl border-0"
+        href="#"
+        tabindex="-1"
+        aria-disabled="true"
+        ><i class="fa fa-angle-right"></i
+      ></a>
+      <a
+        id="last-page"
+        class="page-item page-link py-2 rounded-xs color-black shadow-xl border-0"
+        href="#"
+        tabindex="-1"
+        aria-disabled="true"
+        ><i class="fa fa-angles-right"></i
+      ></a>
+    </div>
+  </nav>
+
+  <div class="footer disabled card card-style">
+    <a href="#" class="footer-title"
+      ><span class="color-highlight">StickyMobile</span></a
+    >
+    <p class="footer-text">
+      <span
+        >Made with
+        <i class="fa fa-heart color-highlight font-16 ps-2 pe-2"></i> by
+        Enabled</span
+      ><br /><br />Powered by the best Mobile Website Developer on Envato
+      Market. Elite Quality. Elite Products.
+    </p>
+    <div class="text-center mb-3">
+      <a href="#" class="icon icon-xs rounded-sm shadow-l me-1 bg-facebook"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+      <a href="#" class="icon icon-xs rounded-sm shadow-l me-1 bg-twitter"
+        ><i class="fab fa-twitter"></i
+      ></a>
+      <a href="#" class="icon icon-xs rounded-sm shadow-l me-1 bg-phone"
+        ><i class="fa fa-phone"></i
+      ></a>
+      <a
+        href="#"
+        data-menu="menu-share"
+        class="icon icon-xs rounded-sm me-1 shadow-l bg-red-dark"
+        ><i class="fa fa-share-alt"></i
+      ></a>
+      <a
+        href="#"
+        class="back-to-top icon icon-xs rounded-sm shadow-l bg-dark-light"
+        ><i class="fa fa-angle-up"></i
+      ></a>
+    </div>
+    <p class="footer-copyright">
+      Copyright &copy; Enabled <span id="copyright-year">2017</span>. All Rights
+      Reserved.
+    </p>
+    <p class="footer-links">
+      <a href="#" class="color-highlight">Privacy Policy</a> |
+      <a href="#" class="color-highlight">Terms and Conditions</a> |
+      <a href="#" class="back-to-top color-highlight"> Back to Top</a>
+    </p>
+    <div class="clear"></div>
+  </div>
+</div>
+
+<!-- End of Page Content-->

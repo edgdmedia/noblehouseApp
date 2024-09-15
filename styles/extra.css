@@ -1,0 +1,42 @@
+.skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-color: #efeeeede;
+    }
+    100% {
+      background-color: #e0dfdfbd;
+    }
+  }
+
+  .h-140px{
+    height: 140px !important;
+  }
+  .h-100px{
+    height: 100px !important;
+  }
+
+  .h-80px{
+    height: 80px !important;
+  }
+  .h-40px{
+    height: 40px !important;
+  }
+
+  .h-20px{
+    height: 20px !important;
+  }
+
+  .h-50px{
+    height: 40px !important;
+  }
+
+  .w-40{
+    width: 40% !important;
+  }
+
+  .w-60{
+    width: 60% !important;
+  }
