@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-            
+
 
         // //Attaching Menu Hider
         var menuHider = document.getElementsByClassName('menu-hider');
@@ -210,11 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
         //Loading data by Ajax on Page
         var dataDivs = document.querySelectorAll(".data-div");
         if (dataDivs.length) {
-            console.log('sfdfdf');
             dataDivs.forEach(function (el) {
                 let dataType = el.getAttribute("data-type");
                 if (dataType === "albums") {
-                    console.log('Im in albums');
                     let queryData = getStorage('queryAlbums');
                     queryData.div = el;
                     fetchData(queryData);
@@ -269,8 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 setStorage('queryAlbums', storageData);
                 fetchData(storageData);
             });
-        } else {
-            console.log('No div seen');
         }
 
         // function getDataDiv(dataType) {
@@ -283,7 +279,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function fetchData(queryData) {
-            console.log(queryData);
             $.get(queryData.fetchUrl, {
                 search: queryData.searchTerm,
                 orderby: queryData.orderBy,
@@ -340,7 +335,6 @@ document.addEventListener('DOMContentLoaded', () => {
             var dataDiv = $(".data-div").html('').scrollTop(0);
             if (queryData.dataType === 'Albums') {
                 $.each(data, function (index, item) {
-                    console.log(item);
                     var albumImageUrl = item._embedded?.['wp:featuredmedia']?.[0]?.source_url || 'http://noblehousecc.org/wp-content/uploads/2022/06/The-Love-of-God-Pastor-Tolulope-Fadulu-29-05-2022-mp3-image.jpg';
                     var album = `<a class="" href="#">
                                   <div class="card card-style " loading="lazy" style="background-image: url(${albumImageUrl}); min-height:350px; -webkit-transform: none !important;">
@@ -395,11 +389,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     let $track = $(track);
                     // Add onclick listener to the noteType element
                     $track.click(function () {
-                        $('#footer-audio').removeClass('d-none');
+                        //Play Audio
                         $('audio #audio-player');
                         $('#audio-source').attr('src', item.source_url);
                         $('#audio-player')[0].load(); // reload the audio player with the new source
                         $('#audio-player')[0].play();
+                        $('.track-play').removeClass('fa-play').addClass('fa-pause');
+
+                        //Update the footer player
+                        $('#footer-audio').removeClass('d-none');
+                        $('.track-item').each(function () {
+                            var albumImageUrl = item._embedded?.['wp:featuredmedia']?.[0]?.source_url || 'http://noblehousecc.org/wp-content/uploads/2022/06/The-Love-of-God-Pastor-Tolulope-Fadulu-29-05-2022-mp3-image.jpg';
+                            const dataItem = $(this).attr('data-item');
+                            let value = ''; // Replace with your desired value or logic
+
+                            if (dataItem === 'title') {
+                                value = item.title.rendered; // Example value
+                            } else if (dataItem === 'minister') {
+                                value = item.media_details.artist; // Example value
+                            } else if (dataItem === 'image') {
+                                value = `<img src="${currentAlbum.imageUrl}" data-src="${currentAlbum.imageUrl}" class=" preload-img card mb-0 img-fluid rounded-m entered loaded" alt="img" data-ll-status="loaded" loading="lazy" />`;
+                            }
+                            $(this).html(value); // Update the innerHTML
+                        });
+
+                        //Update default device Audio Player
                         if ('mediaSession' in navigator) {
                             navigator.mediaSession.metadata = new MediaMetadata({
                                 title: item.title.rendered,
@@ -611,6 +625,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //Activating Menus
         document.querySelectorAll('.menu').forEach(el => { el.style.display = 'block' })
+
+        //Footer Audio Play Button
+        // Update seek bar and track-play icon on audio playback
+        $('#audio-player')[0].addEventListener('timeupdate', () => {
+            const progress = ($('#audio-player')[0].currentTime / $('#audio-player')[0].duration) * 100;
+            $('#seek-bar').val(progress);
+            $('#seek-bar-container .progress').width(`${progress}%`);
+            if ($('#audio-player')[0].currentTime > 0 && !$('#audio-player')[0].paused) {
+                $('.track-play').removeClass('fa-play').addClass('fa-pause');
+            } else {
+                $('.track-play').removeClass('fa-pause').addClass('fa-play');
+            }
+        });
+       
+
+        // Toggle play/pause functionality on track-play button click
+        $('.track-play').on('click', function () {
+            if ($(this).hasClass('fa-play')) {
+                $(this).removeClass('fa-play').addClass('fa-pause');
+                $('#audio-player')[0].play();
+            } else {
+                $(this).removeClass('fa-pause').addClass('fa-play');
+                $('#audio-player')[0].pause();
+            }
+        });
+
+        $('#seek-bar').on('input', function () {
+            const seekBarValue = $(this).val();
+            const audioDuration = $('#audio-player')[0].duration;
+            const newPosition = (seekBarValue / 100) * audioDuration;
+            $('#audio-player')[0].currentTime = newPosition;
+        });
 
         //Validator
         var inputField = document.querySelectorAll('input');
