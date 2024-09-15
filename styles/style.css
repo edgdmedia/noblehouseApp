@@ -485,6 +485,21 @@ body {
   display: flex;
   text-align: center;
 }
+
+#footer-audio {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 96;
+  background-color: rgba(249, 249, 249, 0.98);
+  box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.06);
+  min-height: 60px;
+  height: calc(120px + constant(safe-area-inset-bottom) * 1.1);
+  height: calc(120px + env(safe-area-inset-bottom) * 1.1);
+  display: flex;
+  text-align: center;
+}
 #footer-bar a {
   color: #1f1f1f;
   padding-top: 12px;

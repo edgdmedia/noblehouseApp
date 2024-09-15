@@ -18,13 +18,33 @@ document.addEventListener('DOMContentLoaded', () => {
     var pwaScope = "/";
     var pwaLocation = "/_service-worker.js";
 
-    // if ('serviceWorker' in navigator) {
-    //     // navigator.serviceWorker.getRegistrations().then((registrations) => {
-    //     //     registrations.forEach((registration) => {
-    //     //         registration.unregister();
-    //     //     });
-    //     // });
-    // }
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+            registrations.forEach((registration) => {
+                registration.unregister();
+            });
+        });
+    }
+
+    function loadPage(pageUrl) {
+        fetch(pageUrl)
+            .then(response => response.text())
+            .then(content => {
+                document.getElementById('page-main').innerHTML = content;
+                // Call initPage after content is loaded
+                init_template();
+            });
+    }
+
+    loadPage('home.html');
+
+    // Handle navigation (e.g., button clicks)
+    document.addEventListener('click', event => {
+        if (event.target.tagName === 'A') {
+            event.preventDefault();
+            loadPage(event.target.href);
+        }
+    });
 
     //Place all your custom Javascript functions and plugin calls below this line
     function init_template() {
@@ -151,6 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+            
+
         // //Attaching Menu Hider
         var menuHider = document.getElementsByClassName('menu-hider');
         if (!menuHider.length) { var hider = document.createElement('div'); hider.setAttribute("class", "menu-hider"); document.body.insertAdjacentElement('beforebegin', hider); }
@@ -188,6 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //Loading data by Ajax on Page
         var dataDivs = document.querySelectorAll(".data-div");
         if (dataDivs.length) {
+            console.log('sfdfdf');
             dataDivs.forEach(function (el) {
                 let dataType = el.getAttribute("data-type");
                 if (dataType === "albums") {
@@ -246,6 +269,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 setStorage('queryAlbums', storageData);
                 fetchData(storageData);
             });
+        } else {
+            console.log('No div seen');
         }
 
         // function getDataDiv(dataType) {
@@ -340,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             title: item.title['rendered'],
                             date: formatDate(item.date, { year: true }),
                         }, true);
-                        window.location.href = "/sermon.html"
+                        loadPage('/sermon.html');
                     });
                     $(dataDiv).append($album)
                 })
@@ -370,7 +395,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     let $track = $(track);
                     // Add onclick listener to the noteType element
                     $track.click(function () {
-                        $('audio #audio-player')
+                        $('#footer-audio').removeClass('d-none');
+                        $('audio #audio-player');
                         $('#audio-source').attr('src', item.source_url);
                         $('#audio-player')[0].load(); // reload the audio player with the new source
                         $('#audio-player')[0].play();
@@ -391,6 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             navigator.mediaSession.setActionHandler('pause', function () {
                                 $('#audio-player')[0].pause();
                             });
+
                             // Seek backward (rewind)
                             navigator.mediaSession.setActionHandler('seekbackward', function () {
                                 $('#audio-player')[0].currentTime = Math.max(0, $('#audio-player')[0].currentTime - 10); // Rewind 10 seconds
@@ -468,6 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 paginationItem.on('click', function (event) {
+                    console.log('clicked');
                     event.preventDefault();
                     let currentPage = parseInt($(this).attr('data-page'));
                     storageData.currentPage = currentPage;
@@ -833,6 +861,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 iframes.forEach(el => { var hrefer = el.getAttribute('src'); el.setAttribute('newSrc', hrefer); el.setAttribute('src', ''); var newSrc = el.getAttribute('newSrc'); el.setAttribute('src', newSrc) });
             }));
         }
+
+        //footer menu lead to page open
+
+        document.querySelectorAll('#footer-bar a[data-page]').forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                loadPage(link.getAttribute('data-page'));
+            });
+        });
 
 
         //Back Button
